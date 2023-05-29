@@ -16,8 +16,8 @@ const Container = ({ className, ...props }: Partial<Pick<HTMLAttributes<HTMLDivE
 const Date = ({ day, month }: { day: string, month: string }) => {
   return (
     <div className="-rotate-90 -ml-4 mt-6 relative w-24" >
-      <span className="text-cod-gray-700 w-24 text-end font-black text-4xl" >{month}</span>
-      <span className="absolute text-lg bottom-0 -right-2 text-cod-gray-300 font-bold">{day}</span>
+      <span className="text-cod-gray-900 w-24 text-end font-black text-4xl" >{month}</span>
+      <span className="absolute text-lg bottom-0 -right-2 text-cod-gray-400 font-bold">{day}</span>
     </div>
   )
 }

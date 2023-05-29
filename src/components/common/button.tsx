@@ -4,7 +4,7 @@ import { ButtonHTMLAttributes } from "react";
 const variants = cva("w-fit group flex items-center justify-center gap-1 transition-all border", {
   variants: {
     size: {
-      md: ["h-9 rounded px-2"]
+      md: ["h-9 rounded"]
     },
 
     variant: {
@@ -13,11 +13,11 @@ const variants = cva("w-fit group flex items-center justify-center gap-1 transit
 
     type: {
       filled: [
-        "text-cod-gray-950",
+        "text-cod-gray-950 px-2",
         "-translate-x-1 -translate-y-1",
         "active:translate-x-0 active:translate-y-0",
       ],
-      transparent: ["bg-opacity-0 border-none", "hover:bg-opacity-10"],
+      transparent: ["bg-opacity-0 border-none px-2", "hover:bg-opacity-10"],
       link: ["px-0 bg-opacity-0 text-opacity-100 border-none", "hover:text-opacity-75 hover:bg-opacity-0"]
     },
 
@@ -43,12 +43,19 @@ const variants = cva("w-fit group flex items-center justify-center gap-1 transit
 type ButtonProps = VariantProps<typeof variants> & Partial<Pick<ButtonHTMLAttributes<HTMLButtonElement>, "children" | "onClick" | "className" | "disabled">>
 
 export default function Button({ size, type = "filled", shape, variant, className, ...rest }: ButtonProps) {
-  return (
+
+  const component = (
+    <button className={cx(variants({ size, type, shape, variant }), className)} {...rest}>
+      {rest.children}
+    </button>
+  )
+
+  if (type === "filled") return (
     <div className="relative">
-      {type !== "filled" ? null : <span className="absolute -z-10 top-0 left-0 w-full h-full bg-cod-gray-950 border border-cod-gray-100 rounded" />}
-      <button className={cx(variants({ size, type, shape, variant }), className)} {...rest}>
-        {rest.children}
-      </button>
+      <span className="absolute -z-10 top-0 left-0 w-full h-full bg-cod-gray-950 border border-cod-gray-100 rounded" />
+      {component}
     </div>
   )
+
+  return component
 }

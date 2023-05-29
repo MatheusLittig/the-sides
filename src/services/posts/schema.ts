@@ -33,8 +33,16 @@ const PostListSchema = z.array(z.object({
           content: z.string()
         })
       }))
+    }),
+    ["Headline"]: z.object({
+      id: z.string(),
+      rich_text: z.array(z.object({
+        text: z.object({
+          content: z.string()
+        })
+      }))
     })
-  }).transform(props => ({ tags: props["Tags"].multi_select, title: props["Name"].title[0].text.content }))
+  }).transform(props => ({ tags: props["Tags"].multi_select, title: props["Name"].title[0].text.content, headline: props["Headline"].rich_text[0].text.content  }))
 }))
 
 
@@ -79,6 +87,14 @@ const PageSchema = z.object({
       created_by: z.object({ object: z.string(), id: z.string() })
     }),
     ["Name"]: z.object({
+      id: z.string(),
+      title: z.array(z.object({
+        text: z.object({
+          content: z.string()
+        })
+      }))
+    }),
+    ["Headline"]: z.object({
       id: z.string(),
       title: z.array(z.object({
         text: z.object({
