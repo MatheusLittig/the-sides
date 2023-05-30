@@ -23,3 +23,4 @@ const postService = (db: keyof typeof databases) => ({
 })
 
 export default postService
+export type FilterParams = Parameters<typeof notion.databases.query>[0]["filter"]

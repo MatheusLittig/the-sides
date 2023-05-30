@@ -21,7 +21,21 @@ module.exports = {
           '900': '#313131',
           '950': '#0e0e0e',
         },
+
+        "app": {
+          "bg": '#0e0e0e',
+          "alter-bg": "#313131",
+          "text": "#f7f7f7",
+          "text-alter": "#a4a4a4"
+        },
       },
+
+      keyframes: {
+        "top-in": {
+          "0%": { opacity: "0", transform: "translate(0, -20px)" },
+          "100%": { opacity: "1" },
+        },
+      }
     },
   },
   plugins: [],

@@ -45,7 +45,6 @@ const PostListSchema = z.array(z.object({
   }).transform(props => ({ tags: props["Tags"].multi_select, title: props["Name"].title[0].text.content, headline: props["Headline"].rich_text[0].text.content  }))
 }))
 
-
 const TextContentSchema = z.object({
   rich_text: z.array(z.object({
     type: z.string(),

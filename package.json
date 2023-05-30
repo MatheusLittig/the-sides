@@ -15,6 +15,7 @@
     "@types/react-dom": "18.2.4",
     "autoprefixer": "10.4.14",
     "class-variance-authority": "^0.6.0",
+    "lodash.debounce": "^4.0.8",
     "lucide-react": "^0.221.0",
     "next": "13.4.3",
     "postcss": "8.4.23",
@@ -24,6 +25,7 @@
     "typescript": "5.0.4"
   },
   "devDependencies": {
+    "@types/lodash.debounce": "^4.0.7",
     "zod": "^3.21.4"
   }
 }

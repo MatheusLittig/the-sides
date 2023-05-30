@@ -4,7 +4,8 @@ import { ButtonHTMLAttributes } from "react";
 const variants = cva("w-fit group flex items-center justify-center gap-1 transition-all border", {
   variants: {
     size: {
-      md: ["h-9 rounded"]
+      sm: ["h-9 rounded"],
+      md: ["h-10 rounded"]
     },
 
     variant: {
@@ -26,6 +27,11 @@ const variants = cva("w-fit group flex items-center justify-center gap-1 transit
     }
   },
   compoundVariants: [
+    {
+      size: "md",
+      shape: "square",
+      class: "w-10"
+    },
     {
       size: "md",
       shape: "square",
