@@ -1,7 +1,13 @@
 import postService from "@/services/posts";
 import Block from "./(compose)/render-block";
 import Image from "next/image";
-import Post from "@/components/templates/post";
+import { Merriweather } from "next/font/google"
+import { cx } from "class-variance-authority";
+
+const title = Merriweather({
+  subsets: ["latin"],
+  weight: "700"
+})
 
 export default async function PostContent({ params }: { params: { id: string } }) {
   const content = await postService("the_sides").fetchById(params.id)
@@ -15,13 +21,11 @@ export default async function PostContent({ params }: { params: { id: string } }
           </figure>
         )}
 
-        <header>
+        <header className="flex flex-col gap-2">
           <div className="flex items-center gap-2 text-sm">
-            <span>Post by <strong>{content.properties["Created by"].id}</strong></span>
-            <span className="w-[2px] h-[2px] rounded-full bg-app-text" />
             <span>{new Date(content.created_time).toLocaleDateString("en-US", { dateStyle: "medium" })}</span>
           </div>
-          <Post.Title className="text-3xl">{content.title}</Post.Title>
+          <h1 className={cx("text-4xl font-bold", title.className)}>{content.title}</h1>
         </header>
 
         <section className="mt-9">

@@ -19,7 +19,7 @@ export default function NavBar() {
   return (
     <header className="w-full h-20 grid grid-cols-4 gap-4">
       <span className="col-span-1 w-full h-full flex items-center justify-start">
-        <Image src="the-sides-dark.svg" height={36} width={74} alt="The Sides" />
+        <Image src="the-sides-dark.svg" height={44} width={88} alt="The Sides" />
       </span>
 
       <nav className="col-span-2 w-full h-full flex items-center justify-center">

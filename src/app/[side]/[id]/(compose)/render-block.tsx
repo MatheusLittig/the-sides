@@ -1,11 +1,8 @@
-import { PostSchema } from "@/services/posts/schema";
-import { cx } from "class-variance-authority";
-import { JetBrains_Mono } from "next/font/google"
 import React from "react";
+import { PostSchema } from "@/services/posts/schema";
 
 import { CodeBlock } from "./code-block";
-
-const monoFont = JetBrains_Mono({ subsets: ['latin'] })
+import { CopyBtn } from "./copy-btn";
 
 const Block = ({ block }: { block: Partial<PostSchema["blocks"][number]> }) => {
   const renderRichText = (richText?: {
@@ -43,7 +40,7 @@ const Block = ({ block }: { block: Partial<PostSchema["blocks"][number]> }) => {
 
     case "bulleted_list_item":
       return (
-        <ul className="list-disc list-inside">
+        <ul className="flex flex-col mb-6">
           {block?.bulleted_list_item?.rich_text.map((text, index) => (
             <li key={index} className="mb-3">{String(text.text.content)}</li>
           ))}
@@ -66,8 +63,9 @@ const Block = ({ block }: { block: Partial<PostSchema["blocks"][number]> }) => {
 
     case "code":
       return (
-        <pre className={cx(monoFont.className, "pb-6")}>
-          <CodeBlock>{block?.code?.rich_text[0].text.content}</CodeBlock>
+        <pre className="border border-app-alter-bg p-4 mb-8 rounded-lg relative">
+          <CodeBlock language={String(block.code?.language)}>{block?.code?.rich_text[0].text.content}</CodeBlock>
+          <CopyBtn content={block?.code?.rich_text[0].text.content as string} />
         </pre>
       );
 
@@ -115,7 +113,7 @@ const Block = ({ block }: { block: Partial<PostSchema["blocks"][number]> }) => {
 
     case "paragraph":
       return (
-        <p className="pb-6">
+        <p className="mt-2 mb-8 leading-8">
           {renderRichText(block?.paragraph?.rich_text)}
         </p>
       );

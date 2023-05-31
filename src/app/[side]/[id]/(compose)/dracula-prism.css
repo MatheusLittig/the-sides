@@ -22,7 +22,7 @@ http://prismjs.com/download.html#themes=prism&languages=markup+css+clike+javascr
 
 :root
 {
-  --background: #1E1E1E;
+  --background: transparent;
   --comment:    #6272A4;
   --foreground: #F8F8F2;
   --selection:  #44475A;

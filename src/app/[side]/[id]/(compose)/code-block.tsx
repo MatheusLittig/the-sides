@@ -6,14 +6,16 @@ import { ReactNode, useEffect } from "react"
 import "./dracula-prism.css";
 import { cx } from "class-variance-authority";
 
-export const CodeBlock = ({ children }: { children: ReactNode }) => {
+export const CodeBlock = ({ children, language }: { children: ReactNode, language: string }) => {
 
   useEffect(() => {
     Prism.highlightAll()
   }, [])
 
+  console.log(language)
+
   return (
-    <code className={cx(`language-javascript`, "bg-app-alter-bg")}>
+    <code className={cx(`language-${language ?? "javascript"}`)}>
       {children}
     </code>
   )

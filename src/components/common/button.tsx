@@ -35,7 +35,7 @@ const variants = cva("w-fit group flex items-center justify-center gap-1 transit
     {
       size: "md",
       shape: "square",
-      class: "w-[2.5rem]"
+      class: "w-10"
     }
   ],
 
