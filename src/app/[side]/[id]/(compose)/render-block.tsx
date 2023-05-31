@@ -1,5 +1,11 @@
 import { PostSchema } from "@/services/posts/schema";
+import { cx } from "class-variance-authority";
+import { JetBrains_Mono } from "next/font/google"
 import React from "react";
+
+import { CodeBlock } from "./code-block";
+
+const monoFont = JetBrains_Mono({ subsets: ['latin'] })
 
 const Block = ({ block }: { block: Partial<PostSchema["blocks"][number]> }) => {
   const renderRichText = (richText?: {
@@ -37,9 +43,9 @@ const Block = ({ block }: { block: Partial<PostSchema["blocks"][number]> }) => {
 
     case "bulleted_list_item":
       return (
-        <ul>
+        <ul className="list-disc list-inside">
           {block?.bulleted_list_item?.rich_text.map((text, index) => (
-            <li key={index}>{text.text.content}</li>
+            <li key={index} className="mb-3">{String(text.text.content)}</li>
           ))}
         </ul>
       );
@@ -60,8 +66,8 @@ const Block = ({ block }: { block: Partial<PostSchema["blocks"][number]> }) => {
 
     case "code":
       return (
-        <pre>
-          <code>{block?.code?.rich_text[0].text.content}</code>
+        <pre className={cx(monoFont.className, "pb-6")}>
+          <CodeBlock>{block?.code?.rich_text[0].text.content}</CodeBlock>
         </pre>
       );
 
@@ -70,21 +76,21 @@ const Block = ({ block }: { block: Partial<PostSchema["blocks"][number]> }) => {
 
     case "heading_1":
       return (
-        <h1 style={{ color: block?.heading_1?.color }}>
+        <h1 className="text-2xl font-bold leading-10">
           {renderRichText(block?.heading_1?.rich_text)}
         </h1>
       );
 
     case "heading_2":
       return (
-        <h2 style={{ color: block?.heading_2?.color }}>
+        <h2 className="text-xl font-bold leading-9">
           {renderRichText(block?.heading_2?.rich_text)}
         </h2>
       );
 
     case "heading_3":
       return (
-        <h3 style={{ color: block?.heading_3?.color }}>
+        <h3 className="text-2xl font-bold leading-8">
           {renderRichText(block?.heading_3?.rich_text)}
         </h3>
       );
@@ -109,7 +115,7 @@ const Block = ({ block }: { block: Partial<PostSchema["blocks"][number]> }) => {
 
     case "paragraph":
       return (
-        <p style={{ color: block?.paragraph?.color }}>
+        <p className="pb-6">
           {renderRichText(block?.paragraph?.rich_text)}
         </p>
       );

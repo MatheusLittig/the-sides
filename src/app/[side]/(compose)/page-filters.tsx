@@ -41,7 +41,7 @@ export default function PageFilters({ tags }: { tags: string[] }) {
           <li
             className={cx(
               "w-fit cursor-pointer transition-all bg-app-text bg-opacity-0 border border-app-text text-app-text px-3 h-10 rounded flex items-center justify-center hover:bg-opacity-10",
-              searchTag === tag && "bg-opacity-100 text-app-bg hover:bg-opacity-75 border-none"
+              searchTag === tag && "bg-opacity-100 text-black hover:bg-opacity-75 border-none"
             )
             }
             key={index}

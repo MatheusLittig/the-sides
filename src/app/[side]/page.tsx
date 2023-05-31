@@ -35,7 +35,12 @@ export default async function SidePage({ params, searchParams }: { params: { sid
         <section id="posts" className="flex flex-col gap-8 col-span-2 w-full h-full">
           {posts.map(i => (
             <Post className="animate-top-in" key={i.id}>
-              <Post.Content>
+              <Post.Content className="flex flex-col gap-1">
+                <div className="flex items-center gap-2 text-sm">
+                  <span>Post by <strong>{i.created_by.object}</strong></span>
+                  <span className="w-[2px] h-[2px] rounded-full bg-app-text" />
+                  <span>{new Date(i.created_time).toLocaleDateString("en-US", { dateStyle: "medium" })}</span>
+                </div>
                 <Link href={`/${params.side}/${i.id}`} >
                   <Post.Title>{i.properties.title}</Post.Title>
                   <Post.Description>{i.properties.headline}</Post.Description>
