@@ -1,3 +1,4 @@
+import { blocksSchemas } from "@/schemas/blocks"
 import { Schema, z } from "zod"
 
 const PostListSchema = z.array(z.object({
@@ -77,7 +78,7 @@ const PageSchema = z.object({
       url: z.string(),
       expiry_time: z.string(),
     })
-  }),
+  }).optional().nullable(),
   archived: z.boolean(),
   properties: z.object({
     "Created by": z.object({
@@ -93,23 +94,22 @@ const PageSchema = z.object({
         })
       }))
     }),
-    ["Headline"]: z.object({
-      id: z.string(),
-      title: z.array(z.object({
-        text: z.object({
-          content: z.string()
-        })
-      }))
-    })
+    // ["Headline"]: z.object({
+    //   id: z.string(),
+    //   title: z.array(z.object({
+    //     text: z.object({
+    //       content: z.string()
+    //     })
+    //   }))
+    // })
   }),
   blocks: z.array(z.object({
     id: z.string(),
     type: z.string(),
-    "heading_1": TextContentSchema,
-    "heading_2": TextContentSchema,
-    "heading_3": TextContentSchema,
-    "paragraph": TextContentSchema,
+    ...blocksSchemas,
   }))
 }).transform(({ properties, ...rest }) => ({ title: properties.Name.title[0].text.content, properties, ...rest }))
+
+export type PostSchema = z.infer<typeof PageSchema>
 
 export { PostListSchema, PageSchema }

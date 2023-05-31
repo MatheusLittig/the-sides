@@ -29,7 +29,7 @@ export default function NavBar() {
               key={i.href}
               className={cx(
                 "h-10 w-16 transition-all flex items-center justify-center py-1 px-3 rounded hover:text-cod-gray-300 cursor-pointer",
-                path === i.href && "bg-app-alter-bg"
+                path.includes(i.href) && "bg-app-alter-bg"
               )}
             >
               <Link href={i.href}>{i.label}</Link>

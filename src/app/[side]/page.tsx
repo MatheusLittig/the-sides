@@ -4,6 +4,7 @@ import { Suspense } from 'react';
 import postService from "@/services/posts"
 import { ChevronRight } from "lucide-react"
 import PageFilters from "./(compose)/page-filters"
+import Link from "next/link";
 
 export default async function SidePage({ params, searchParams }: { params: { side: string }, searchParams: { tag: string, search: string } }) {
 
@@ -35,8 +36,10 @@ export default async function SidePage({ params, searchParams }: { params: { sid
           {posts.map(i => (
             <Post className="animate-top-in" key={i.id}>
               <Post.Content>
-                <Post.Title>{i.properties.title}</Post.Title>
-                <Post.Description>{i.properties.headline}</Post.Description>
+                <Link href={`/${params.side}/${i.id}`} >
+                  <Post.Title>{i.properties.title}</Post.Title>
+                  <Post.Description>{i.properties.headline}</Post.Description>
+                </Link>
                 <Button type="link">
                   {"Read Article"}
                   <ChevronRight size={20} className="transition-all group-hover:translate-x-[0.15rem]" />

@@ -28,14 +28,14 @@ const variants = cva("w-fit group flex items-center justify-center gap-1 transit
   },
   compoundVariants: [
     {
-      size: "md",
+      size: "sm",
       shape: "square",
-      class: "w-10"
+      class: "w-9"
     },
     {
       size: "md",
       shape: "square",
-      class: "w-9"
+      class: "w-[2.5rem]"
     }
   ],
 
