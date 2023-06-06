@@ -1,14 +1,14 @@
 "use client"
 
 import debounce from 'lodash.debounce'
-import Input from "@/components/common/input"
 import { cx } from "class-variance-authority"
 import { Search } from "lucide-react"
 import Link from "next/link"
 import { usePathname, useSearchParams, useRouter } from "next/navigation"
 import { useCallback, useEffect, useMemo, useState } from "react"
+import { Input } from '../ui/common/input'
 
-export default function PageFilters({ tags }: { tags: string[] }) {
+export function BlogFilter({ tags }: { tags: string[] }) {
   const [searchValue, setSearchValue] = useState("")
 
   const searchTag = useSearchParams().get("tag")
@@ -22,7 +22,7 @@ export default function PageFilters({ tags }: { tags: string[] }) {
     return
   }, [])
 
-  const memorizedTags = useMemo(() => tags, [path])
+  const MEMORIZED_TAGS = useMemo(() => tags, [path])
 
   useEffect(() => {
     if (searchValue !== "") {
@@ -37,7 +37,7 @@ export default function PageFilters({ tags }: { tags: string[] }) {
       <Input full onChange={onSearch} placeholder="Search" sufix={<Search className="text-app-text-alter" size={20} />} />
 
       <ul className="flex items-center flex-wrap gap-3">
-        {memorizedTags.map((tag, index) => (
+        {MEMORIZED_TAGS.map((tag, index) => (
           <li
             className={cx(
               "w-fit cursor-pointer transition-all bg-app-text bg-opacity-0 border border-app-text text-app-text px-3 h-10 rounded flex items-center justify-center hover:bg-opacity-10",

@@ -1,11 +1,6 @@
 import { cx } from "class-variance-authority"
 import { ComponentProps, HTMLAttributes } from "react"
-import { Merriweather } from "next/font/google"
-
-const title = Merriweather({
-  subsets: ["latin"],
-  weight: "700"
-})
+import { Text } from "../common/text"
 
 const Container = ({ className, ...props }: Partial<Pick<HTMLAttributes<HTMLDivElement>, "children" | "onClick" | "className">>) => {
   return (
@@ -30,13 +25,13 @@ const Content = ({ className, ...props }: Partial<Pick<HTMLAttributes<HTMLDivEle
 
 const Title = ({ className, ...props }: Partial<Pick<HTMLAttributes<HTMLHeadingElement>, "children" | "onClick" | "className">>) => {
   return (
-    <h1 className={cx("text-xl text-cod-gray-100 transition-all group-hover:text-opacity-75", title.className, className)} {...props} />
+    <Text type="h1" className={cx("group-hover:text-opacity-75", className)} {...props} />
   )
 }
 
 const Description = ({ className, ...props }: Partial<Pick<HTMLAttributes<HTMLHeadingElement>, "children" | "onClick" | "className">>) => {
   return (
-    <p className={cx("text-cod-gray-400 transition-all group-hover:text-opacity-75", className)} {...props} />
+    <Text type="p" className={cx("text-app-text-alter group-hover:text-opacity-75", className)} {...props} />
   )
 }
 
@@ -54,5 +49,5 @@ Post.Title = Title
 Post.Description = Description
 Post.Content = Content
 
-export default Post
+export { Post }
 

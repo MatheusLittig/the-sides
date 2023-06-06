@@ -2,18 +2,18 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import Button from "../common/button";
 import { Sun } from "lucide-react"
 import { usePathname } from "next/navigation"
 import { cx } from "class-variance-authority";
+import { Button } from "../common/button";
 
-const pages = [
+const PAGES = [
   { href: "/geek", label: "Geek" },
   { href: "/tech", label: "Tech" },
   { href: "/life", label: "Life" }
 ]
 
-export default function NavBar() {
+export function NavBar() {
   const path = usePathname()
 
   return (
@@ -24,7 +24,7 @@ export default function NavBar() {
 
       <nav className="col-span-2 w-full h-full flex items-center justify-center">
         <ul className="flex items-center justify-center">
-          {pages.map(i => (
+          {PAGES.map(i => (
             <li
               key={i.href}
               className={cx(

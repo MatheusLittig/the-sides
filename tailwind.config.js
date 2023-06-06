@@ -25,6 +25,7 @@ module.exports = {
         "app": {
           "bg": '#0e0e0e',
           "alter-bg": "#313131",
+          "bg-gradient": "#161616",
           "text": "#f7f7f7",
           "text-alter": "#a4a4a4"
         },

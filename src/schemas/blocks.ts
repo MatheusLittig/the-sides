@@ -6,6 +6,7 @@ const blocksSchemas = {
   }).optional(),
 
   bulleted_list_item: z.object({
+    id: z.string(),
     rich_text: z.array(z.object({
       type: z.string(),
       text: z.object({

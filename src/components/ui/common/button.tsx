@@ -48,7 +48,7 @@ const variants = cva("w-fit group flex items-center justify-center gap-1 transit
 
 type ButtonProps = VariantProps<typeof variants> & Partial<Pick<ButtonHTMLAttributes<HTMLButtonElement>, "children" | "onClick" | "className" | "disabled">>
 
-export default function Button({ size, type = "filled", shape, variant, className, ...rest }: ButtonProps) {
+export function Button({ size, type = "filled", shape, variant, className, ...rest }: ButtonProps) {
 
   const component = (
     <button className={cx(variants({ size, type, shape, variant }), className)} {...rest}>

@@ -1,13 +1,19 @@
-import { Public_Sans } from 'next/font/google'
 import { cx } from "class-variance-authority"
-import "./globals.css"
-import NavBar from '@/components/layouts/navbar'
+import { Public_Sans } from "next/font/google"
 
-const inter = Public_Sans({ subsets: ['latin'] })
+import "../styles/globals.css"
+import "../styles/dracula-prism.css"
+
+import { About, DailyTip, NavBar } from '@/components'
+
+const baseFont = Public_Sans({ subsets: ["latin"] })
 
 export const metadata = {
   title: 'The Sides',
-  description: 'Matheus personal blog',
+  description: 'A dedicated blog to show my sides related to my presence online',
+  icons: {
+    icon: "favicon.ico"
+  }
 }
 
 export default function RootLayout({
@@ -17,9 +23,12 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={cx(inter.className, "max-w-screen-md bg-app-bg m-[0_auto] text-app-text")}>
-        <NavBar />
-        {children}
+      <body className={cx(" bg-app-bg m-[0_auto] flex flex-col items-center gap-y-24 text-app-text", baseFont.className)}>
+        <div className="max-w-screen-md flex flex-col gap-8">
+          <NavBar />
+          {children}
+        </div>
+        <About />
       </body>
     </html>
   )

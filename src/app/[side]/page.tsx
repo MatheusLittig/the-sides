@@ -1,11 +1,7 @@
-import Post from "@/components/templates/post"
 import { Suspense } from 'react';
-import postService from "@/services/posts"
-import PageFilters from "./(compose)/page-filters"
 import Link from "next/link";
-import Divider from "@/components/common/divider";
-import DailyTip from "./(compose)/daily-tip";
-
+import { BlogFilter, DailyTip, Divider, Post } from '@/components';
+import { postService } from '@/services';
 
 export default async function SidePage({ params, searchParams }: { params: { side: string }, searchParams: { tag: string, search: string } }) {
 
@@ -31,8 +27,7 @@ export default async function SidePage({ params, searchParams }: { params: { sid
   posts.forEach(i => i.properties.tags.map(tag => tags.add(tag.name)))
 
   return (
-    <main className="mt-12 w-full grid grid-cols-3 h-44 gap-8">
-      <Suspense fallback={<p>Loading feed...</p>}>
+    <main className="mt-12 w-full grid grid-cols-3 gap-8">
         <section id="posts" className="flex flex-col items-center gap-8 col-span-2 w-full h-full">
           {posts.map(i => (
             <Post className="animate-top-in" key={i.id}>
@@ -48,12 +43,11 @@ export default async function SidePage({ params, searchParams }: { params: { sid
             </Post>
           ))}
           <Divider className="mt-24 mb-12" />
-          
+    
           <DailyTip />
         </section>
-      </Suspense>
 
-      <PageFilters tags={Array.from(tags)} />
+      <BlogFilter tags={Array.from(tags)} />
     </main>
   )
 }

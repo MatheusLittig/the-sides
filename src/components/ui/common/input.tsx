@@ -34,7 +34,7 @@ type InputProps = Partial<React.InputHTMLAttributes<HTMLInputElement>> & Variant
   sufix?: React.ReactNode
 }
 
-export default function Input({ size, variant, full, sufix, prefix, ...props }: InputProps) {
+export function Input({ size, variant, full, sufix, prefix, ...props }: InputProps) {
   return (
     <div className={variants({ size, variant, full })}>
       {prefix ?? null}
