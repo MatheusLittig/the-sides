@@ -2,21 +2,12 @@
 const nextConfig = {
   images: {
     domains: [
-      "s3.us-west-2.amazonaws.com"
+      "s3.us-west-2.amazonaws.com",
+      "pbs.twimg.com"
     ]
   },
   experimental: {
     serverActions: true,
-  },
-
-  async redirects() {
-    return [
-      {
-        source: '/',
-        destination: '/tech',
-        permanent: true,
-      },
-    ];
   },
 
   webpack: config => {

@@ -1,6 +1,5 @@
-import { Suspense } from 'react';
 import Link from "next/link";
-import { BlogFilter, DailyTip, Divider, Post } from '@/components';
+import { BlogFilter, Divider, Post } from '@/components';
 import { postService } from '@/services';
 
 export default async function SidePage({ params, searchParams }: { params: { side: string }, searchParams: { tag: string, search: string } }) {
@@ -43,8 +42,6 @@ export default async function SidePage({ params, searchParams }: { params: { sid
             </Post>
           ))}
           <Divider className="mt-24 mb-12" />
-    
-          <DailyTip />
         </section>
 
       <BlogFilter tags={Array.from(tags)} />

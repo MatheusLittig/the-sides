@@ -5,6 +5,7 @@ import { Text } from "../ui/common/text"
 
 const desc = Merriweather({
   subsets: ["latin"],
+  style: "italic",
   weight: "300"
 })
 
@@ -52,15 +53,17 @@ export function DailyTip() {
   const spikeTipForTheDay = TIPS_COLLECTION[Math.floor(Math.random() * TIPS_COLLECTION.length)]
 
   return (
-    <span className="w-full flex items-center gap-4">
+    <main className="w-full grid grid-cols-3">
+    <span className="col-span-2 flex items-center gap-4">
       <div style={{ WebkitMask: "linear-gradient(to bottom, #fff, #fff, #fff, #fff, transparent, transparent)" }} className="w-20 h-44 relative">
         <Image src="/spike.png" alt="Spike daily tip" fill style={{ objectFit: "contain" }} />
       </div>
 
       <div className={cx("flex flex-1 flex-col gap-2")}>
         <p className={desc.className}>Daily Spike's tip</p>
-        <h2 className={cx(title.className, "font-bold text-2xl")}>{`"${spikeTipForTheDay}"`}</h2>
+        <h2 className={cx(title.className, "font-bold text-xl")}>{`"${spikeTipForTheDay}"`}</h2>
       </div>
     </span>
+    </main>
   )
 }

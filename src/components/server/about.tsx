@@ -3,8 +3,7 @@ import { Text } from "../ui/common/text";
 
 export function About() {
   return (
-    <main className="relative w-full overflow-x-hidden flex flex-col items-center h-64 before:absolute before:w-screen before:h-full before:content-app-bg-gradient before:bg-gradient-to-t before:bottom-0 before:left-0 before:from-app-bg-gradient before:to-transparent">
-      <div className="max-w-screen-md w-full flex flex-col items-start gap-8 z-10">
+      <div className="w-full flex flex-col items-start gap-8 z-10 mt-8">
         <Text type="h1">About LittiNg_</Text>
 
         <section className="flex items-start gap-4 ">
@@ -17,6 +16,5 @@ export function About() {
           </div>
         </section>
       </div>
-    </main>
   )
 }

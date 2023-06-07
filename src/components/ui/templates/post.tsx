@@ -25,7 +25,7 @@ const Content = ({ className, ...props }: Partial<Pick<HTMLAttributes<HTMLDivEle
 
 const Title = ({ className, ...props }: Partial<Pick<HTMLAttributes<HTMLHeadingElement>, "children" | "onClick" | "className">>) => {
   return (
-    <Text type="h1" className={cx("group-hover:text-opacity-75", className)} {...props} />
+    <Text type="h2" className={cx("group-hover:text-opacity-75", className)} {...props} />
   )
 }
 
